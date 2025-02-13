@@ -27,6 +27,6 @@ export default defineConfig({
     footer: {
       copyright: "copyright @ 2025 Amadeus",
     },
-    base: "/amadeus-blog/"
+    base: '/',
   }
 })
