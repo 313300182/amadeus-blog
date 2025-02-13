@@ -46,7 +46,7 @@ jobs:
 
       # 上传构建产物到 Artifact 中心
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4 # 使用最新版本 v4
+        uses: actions/upload-pages-artifact@v3 # 使用最新版本 v3
         with:
           path: .vitepress/dist # 指定构建产物路径，当前是根目录，如果是docs需要加docs/的前缀
 
