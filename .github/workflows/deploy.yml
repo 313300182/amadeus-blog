@@ -30,18 +30,25 @@ jobs:
         with:
           node-version: 22.14.0
           cache: npm # 设置缓存
-      - name: Setup Pages
-        uses: actions/configure-pages@v3  # 在工作流程自动配置GithubPages
+      # 安装依赖
       - name: Install dependencies
-        run: npm install # 安装依赖
+        run: npm install
+        
+      # 构建 VitePress 项目
       - name: Build with VitePress
         run: |
-          npm run docs:build # 启动项目
-          touch .nojekyll  # 通知githubpages不要使用Jekyll处理这个站点，不知道为啥不生效，就手动搞了
+          npm run docs:build # 执行构建命令
+          touch .nojekyll    # 防止 Jekyll 处理
+
+      # 调试构建输出（可选）
+      - name: Debug build output
+        run: ls -la .vitepress/dist
+
+      # 上传构建产物到 Artifact 中心
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 上传构建产物
+        uses: actions/upload-pages-artifact@v4 # 使用最新版本 v4
         with:
-          path: .vitepress/dist # 指定上传的路径，当前是根目录，如果是docs需要加docs/的前缀
+          path: .vitepress/dist # 指定构建产物路径，当前是根目录，如果是docs需要加docs/的前缀
 
   # 部署工作
   deploy:
