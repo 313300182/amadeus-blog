@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/amadeus-blog/',
   title: "My Awesome Project",
   description: "A VitePress Site",
   themeConfig: {
@@ -27,6 +28,5 @@ export default defineConfig({
     footer: {
       copyright: "copyright @ 2025 Amadeus",
     },
-    base: '/',
   }
 })
